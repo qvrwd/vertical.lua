@@ -22,6 +22,7 @@ end
 getgenv().PikaESPSettings = {
     Box = false,
     Name = false,
+    Gun = false,
     Tracers = false,
     Chams = false,
     Font = 3,
@@ -151,6 +152,17 @@ local function PikaESP(v)
                 else
                     Tracer.Visible = false
                 end
+                if PikaESPSettings.Gun then
+                    Gun.Size = PikaESPSettings.TextSize
+                    Gun.Text = tostring(v.Character.EquippedTool.Value)
+                    Gun.Position = Vector2.new(LegPosition.X, LegPosition.Y + 10)
+                    Gun.Visible = true
+
+                    if v.Team == game.Players.LocalPlayer.Team then
+                        Gun.Visible = false
+                    end
+                end
+
                 if PikaESPSettings.Name then
                     Name.Text = tostring(v.Name)
                     Name.Position = Vector2.new(workspace.Camera:WorldToViewportPoint(v.Character.Head.Position).X, workspace.Camera:WorldToViewportPoint(v.Character.Head.Position).Y - 30)
@@ -169,18 +181,11 @@ local function PikaESP(v)
                         Name.Font = 3
                         Gun.Font = 3
                     end
-                    Gun.Size = PikaESPSettings.TextSize
-                    Gun.Text = tostring(v.Character.EquippedTool.Value)
-                    Gun.Position = Vector2.new(LegPosition.X, LegPosition.Y + 10)
-                    Gun.Visible = true
-                        
                     if v.Team == game.Players.LocalPlayer.Team then
                         Name.Visible = false
-                        Gun.Visible = false
                     end
                 else
                     Name.Visible = false
-                    Gun.Visible = false
                 end
             else
                 BoxOutline.Visible = false
