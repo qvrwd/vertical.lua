@@ -161,6 +161,8 @@ local function PikaESP(v)
                     if v.Team == game.Players.LocalPlayer.Team then
                         Gun.Visible = false
                     end
+                else
+                    Gun.Visible = false
                 end
 
                 if PikaESPSettings.Name then
